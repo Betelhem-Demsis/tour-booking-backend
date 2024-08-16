@@ -2,6 +2,8 @@ const Tour = require('../models/tourModel');
 const APIFeatures = require('../utils/apifeatures.js');
 const catchAsync = require('../utils/catchAsync');
 const AppError=require('../utils/appError');
+
+
 exports.aliasTopTour = (req, res, next) => {
   req.query.limit = '5';
   req.query.sort = '-ratingAverage,price';
