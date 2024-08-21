@@ -10,6 +10,9 @@ const router=express.Router();
   router.patch('/forgotPassword',authController.forgotPassword)
   router.patch('/resetPassword',authController.resetPassword)
   router.patch('/updateMyPassword',authController.protect,authController.updatePassword)
+
+
+  router.get('/me',authController.protect,userController.getMe,userController.getUser)
   router.patch('/updateme',authController.protect,userController.updateMe)
   router.delete('/deleteme',authController.protect,userController.deleteMe)
   
