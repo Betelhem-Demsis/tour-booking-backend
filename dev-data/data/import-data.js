@@ -19,7 +19,7 @@ mongoose
   .then(() => console.log('connection succeful'));
 
 const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/'tours-simple.json'`, 'utf-8'),
+  fs.readFileSync(`${__dirname}/'tours.json'`, 'utf-8'),
 );
 
 const importData = async () => {
@@ -47,4 +47,3 @@ else if (process.argv[2]==='--delete'){
   deleteData();
 }
 
-console.log(process.argv);
