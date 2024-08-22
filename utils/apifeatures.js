@@ -18,7 +18,7 @@ class APIFeatures {
   }
 
   sort() {
-    if (req.queryString.sort) {
+    if (this.queryString.sort) {
       const sortBy = req.queryString.sort.split(',').join(' ');
       this.query = this.query.sort(sortBy);
     } else {

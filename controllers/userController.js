@@ -16,7 +16,7 @@ exports.getMe=(req,res,next)=>{
   next()
 }
 
-const filterBody=filterObj(req.body,'name','email');
+// const filterBody=filterObj(req.body,'name','email');
 exports.updateMe=catchAsync(async(req,res,next)=>{
   if(req.body.password||req.body.confirmPassword){
     return next(new AppError('this route is not for password updates. Please use /updateMyPassword',400))

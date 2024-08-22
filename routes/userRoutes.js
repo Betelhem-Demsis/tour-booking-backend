@@ -9,13 +9,16 @@ const router=express.Router();
   router.post('/login',authController.login)
   router.patch('/forgotPassword',authController.forgotPassword)
   router.patch('/resetPassword',authController.resetPassword)
-  router.patch('/updateMyPassword',authController.protect,authController.updatePassword)
-
-
-  router.get('/me',authController.protect,userController.getMe,userController.getUser)
-  router.patch('/updateme',authController.protect,userController.updateMe)
-  router.delete('/deleteme',authController.protect,userController.deleteMe)
   
+  
+  router.use(authController.protect);
+  router.patch('/updateMyPassword',authController.updatePassword)
+  router.get('/me',userController.getMe,userController.getUser)
+  router.patch('/updateme',userController.updateMe)
+  router.delete('/deleteme',userController.deleteMe)
+  
+ router.use(authController.restrictTo('admin'));
+
   router
   .route('/')
   .get(userController.getAllUsers)
@@ -27,9 +30,6 @@ const router=express.Router();
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
 
-
-
-  
 
 module.exports=router
 
